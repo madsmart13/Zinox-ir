@@ -355,5 +355,117 @@
       }, 500);
     });
   </script>
+  
+<!-- Game Selection Section -->
+<div id="game-section">
+  <h2 class="game-title">Game ?</h2>
+  <div id="game-options">
+    <button class="game-btn mc">Minecraft</button>
+    <button class="game-btn cs2">CS 2</button>
+    <button class="game-btn r6">Rainbow Six</button>
+    <button class="game-btn dota">Dota 2</button>
+    <button class="game-btn rust">Rust</button>
+    <button class="game-btn wz">Warzone</button>
+    <button class="game-btn other">Other Game</button>
+  </div>
+  <div id="other-input" style="display:none;">
+    <input type="text" id="customGame" placeholder="Enter your game name">
+    <button id="submitGame">Submit</button>
+  </div>
+  <div id="selected-game"></div>
+</div>
+
+<style>
+  #game-section {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .game-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  #game-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .game-btn {
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    animation: colorchange 3s infinite alternate;
+  }
+  /* Specific gradients */
+  .mc { background: linear-gradient(45deg, darkgreen, lightgreen); }
+  .cs2 { background: linear-gradient(45deg, orange, yellow); }
+  .r6 { background: linear-gradient(45deg, silver, gray); }
+  .dota { background: linear-gradient(45deg, darkred, red); }
+  .rust { background: linear-gradient(45deg, orange, wheat); }
+  .wz { background: linear-gradient(45deg, darkgray, green); }
+  .other { background: linear-gradient(45deg, purple, violet); }
+
+  #selected-game {
+    margin-top: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    animation: rgbColors 2s infinite;
+  }
+
+  @keyframes rgbColors {
+    0% { color: red; }
+    25% { color: green; }
+    50% { color: blue; }
+    75% { color: yellow; }
+    100% { color: magenta; }
+  }
+</style>
+
+<script>
+  (function(){
+    const buttons = document.querySelectorAll('#game-options .game-btn');
+    const selectedGameDiv = document.getElementById('selected-game');
+    const optionsDiv = document.getElementById('game-options');
+    const otherInput = document.getElementById('other-input');
+    const submitBtn = document.getElementById('submitGame');
+    const inputField = document.getElementById('customGame');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains('other')){
+          otherInput.style.display = "block";
+        } else {
+          showSelected(btn.textContent, btn.style.background);
+        }
+      });
+    });
+
+    submitBtn.addEventListener('click', () => {
+      const val = inputField.value.trim();
+      if(val !== ""){
+        optionsDiv.style.display = "none";
+        otherInput.style.display = "none";
+        selectedGameDiv.textContent = val;
+      }
+    });
+
+    function showSelected(name, bg){
+      optionsDiv.style.display = "none";
+      otherInput.style.display = "none";
+      selectedGameDiv.textContent = name;
+      selectedGameDiv.style.background = bg;
+      selectedGameDiv.style.webkitBackgroundClip = "text";
+      selectedGameDiv.style.color = "transparent";
+    }
+  })();
+</script>
+
+
 </body>
 </html>
