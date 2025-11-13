@@ -1,2 +1,2 @@
-# BM1-ir
+#Zinox-ir
 servers
