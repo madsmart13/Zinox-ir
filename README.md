@@ -23,7 +23,7 @@
 
 <p align="center">
   <!-- هشدار چندزبانه و بسیار برجسته با ایموجی و سبک وارنینگ -->
-  <img src="https://img.shields.io/badge/⚠️%20WARNING-Sites%20are%20in%20demo%20mode-red?style=for-the-badge&logo=exclamationmark&logoColor=white" alt="Warning"/>
+ demo -V1
 </p>
 <p align="center">
   <b>سایت‌ها در حالت دمو قرار دارند</b><br>
