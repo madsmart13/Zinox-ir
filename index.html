@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Zinox-ir - ورود به سرور</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" href="favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.ico">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
@@ -13,38 +13,28 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Vazirmatn', sans-serif;
-  background: linear-gradient(270deg, #100018, #001020, #1a0018, #001a10);
-  background-size: 800% 800%;
-  animation: rgbShift 10s ease infinite; /* سریع‌تر و نرم‌تر */
+  background: #100018;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   position: relative;
+  cursor: none;
+  transition: background 0.1s linear;
 }
 
-@keyframes rgbShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* متحرک سازی نرم RGB */
+@keyframes bgShift {
+  0% { background-color: #100018; }
+  25% { background-color: #180025; }
+  50% { background-color: #200030; }
+  75% { background-color: #120020; }
+  100% { background-color: #100018; }
 }
-
-/* نوارهای نئونی تیکه‌تیکه */
-.neon-stripe {
-  position: absolute;
-  height: 2px;
-  width: 60px;
-  background: linear-gradient(90deg, #ff33aa, #9a00ff);
-  top: 0;
-  opacity: 0.7;
-  animation: moveStripe linear infinite;
-}
-
-@keyframes moveStripe {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(110vw); }
-}
+body { animation: bgShift 20s infinite alternate linear; }
 
 .container {
   position: relative;
@@ -55,84 +45,69 @@ body {
   width: 100%;
   padding: 25px 30px;
   text-align: center;
-  z-index: 1;
+  z-index: 2;
 }
 
-h1 {
-  margin-bottom: 25px;
-  font-weight: 700;
-  font-size: 26px;
-  color: #c44bff;
-}
+h1 { margin-bottom: 25px; font-weight: 700; font-size: 26px; color: #c44bff; }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: right;
-}
+.form-group { margin-bottom: 15px; text-align: right; }
 
 input[type="text"], input[type="tel"] {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid #9a00ff;
-  background: #222;
-  color: #fff;
-  font-size: 16px;
-  outline: none;
-  transition: 0.3s;
+  width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #9a00ff;
+  background: #222; color: #fff; font-size: 16px; outline: none; transition: 0.3s;
 }
-
-input:focus {
-  border-color: #c44bff;
-  box-shadow: 0 0 10px #c44bff;
-}
+input:focus { border-color: #c44bff; box-shadow: 0 0 10px #c44bff; }
 
 button {
-  width: 100%;
-  padding: 14px;
-  background: #9a00ff;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: 700;
-  margin-top: 10px;
+  width: 100%; padding: 14px; background: #9a00ff; border: none; border-radius: 10px;
+  font-size: 18px; color: white; cursor: pointer; transition: 0.3s; font-weight: 700; margin-top: 10px;
 }
-
 button:hover { background: #c44bff; }
 
 #goServersBtn { background: #0099cc; margin-top: 20px; }
 #goServersBtn:hover { background: #0077aa; }
+
+/* 🌟 موس نئونی */
+#cursor {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 9999;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Arrow_cursor_icon.svg') no-repeat center center;
+  background-size: contain;
+  filter: drop-shadow(0 0 10px #ff33aa) drop-shadow(0 0 15px #c44bff);
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s linear;
+}
+
+/* 🌟 افکت نور موس */
+#lightEffect {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,50,200,0.4) 0%, transparent 80%);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: overlay;
+  z-index:1;
+}
 </style>
 </head>
 <body>
 
-<!-- نوارهای نئونی تیکه‌تیکه -->
-<div class="neon-stripe" style="top:20px; animation-duration:4s;"></div>
-<div class="neon-stripe" style="top:50px; animation-duration:5s;"></div>
-<div class="neon-stripe" style="top:80px; animation-duration:6s;"></div>
-<div class="neon-stripe" style="top:110px; animation-duration:4.5s;"></div>
-<div class="neon-stripe" style="top:140px; animation-duration:5.5s;"></div>
+<div id="lightEffect"></div>
+<div id="cursor"></div>
 
 <div class="container">
 <h1>ورود به سایت Zinox</h1>
 
 <form id="zinoxForm" action="https://formspree.io/f/xovrezva" method="POST" target="_blank">
-  <div class="form-group">
-    <input type="text" name="firstName" placeholder="نام" required />
-  </div>
-  <div class="form-group">
-    <input type="text" name="lastName" placeholder="نام خانوادگی" required />
-  </div>
-  <div class="form-group">
-    <input type="text" name="discordId" placeholder="آیدی دیسکورد (اختیاری)" />
-  </div>
-  <div class="form-group">
-    <input type="tel" name="phone" placeholder="شماره موبایل" required />
-  </div>
-
+  <div class="form-group"><input type="text" name="firstName" placeholder="نام" required /></div>
+  <div class="form-group"><input type="text" name="lastName" placeholder="نام خانوادگی" required /></div>
+  <div class="form-group"><input type="text" name="discordId" placeholder="آیدی دیسکورد (اختیاری)" /></div>
+  <div class="form-group"><input type="tel" name="phone" placeholder="شماره موبایل" required /></div>
   <input type="hidden" name="_next" value="https://madsmart13.github.io/Zinox-ir/status.html">
   <button type="submit">تایید</button>
 </form>
@@ -141,32 +116,34 @@ button:hover { background: #c44bff; }
 </div>
 
 <script>
-const form = document.getElementById('zinoxForm');
+// 🌟 موس نئونی و نور روی پس‌زمینه
+const cursor = document.getElementById('cursor');
+const light = document.getElementById('lightEffect');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  light.style.left = e.clientX + 'px';
+  light.style.top = e.clientY + 'px';
+});
 
-form.addEventListener('submit', function(e){
-  const phone = form.phone.value.trim();
-  // اعتبارسنجی شماره موبایل: باید با 09 شروع شود و دقیقاً 11 رقم باشد
-  const phonePattern = /^09\d{9}$/;
+// 🌟 اعتبارسنجی شماره موبایل
+const form=document.getElementById('zinoxForm');
+form.addEventListener('submit',function(e){
+  const phone=form.phone.value.trim();
+  const phonePattern=/^09\d{9}$/;
   if(!phonePattern.test(phone)){
     e.preventDefault();
     alert('شماره موبایل اشتباه است!');
     form.phone.focus();
     return false;
   }
-
-  // بعد از ارسال فرم → صفحه سرورها در همان تب باز شود
-  setTimeout(()=>{
-    window.location.href='status.html';
-  },1000); // کمی تأخیر برای باز شدن صفحه تشکر Formspree در تب جدید
+  setTimeout(()=>{ window.location.href='status.html'; },1000);
 });
 
-let formSubmitted = false;
+let formSubmitted=false;
 function goToServers(){
-  if(formSubmitted){
-    window.location.href='status.html';
-  } else {
-    alert("لطفاً ابتدا فرم را پر کنید.");
-  }
+  if(formSubmitted){ window.location.href='status.html'; } 
+  else { alert("لطفاً ابتدا فرم را پر کنید."); }
 }
 </script>
 
