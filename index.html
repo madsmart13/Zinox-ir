@@ -1,170 +1,174 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta name="google-site-verification" content="st1evo7Mb8LtYAPvyKRaHL3rhbFsFeB4Y8q2fPW23WE" />
-  <meta charset="UTF-8" />
-  <title>Zinox-ir - ورود به سرور</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<title>Zinox-ir - ورود به سرور</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="favicon.ico" />
 
-  <!-- SEO -->
-  <meta name="description" content="ثبت‌نام در سرور گیمینگ Zinox. همین حالا عضو شوید و به جامعه گیمینگ ما بپیوندید.">
-  <meta name="keywords" content="Zinox, سرور گیمینگ, ثبت نام, دیسکورد, بازی آنلاین, گیمر, گیم">
-  <meta name="author" content="Zinox">
-  <meta name="robots" content="index, follow">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Zinox-ir | ثبت‌نام در سرور">
-  <meta property="og:description" content="ثبت‌نام در سرور گیمینگ Zinox. همین حالا عضو شوید.">
-  <meta property="og:url" content="https://madsmart13.github.io/Zinox-ir/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://madsmart13.github.io/Zinox-ir/images/preview.png">
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Vazirmatn', sans-serif;
+  background: linear-gradient(270deg, #100018, #001020, #1a0018, #001a10);
+  background-size: 800% 800%;
+  animation: rgbShift 10s ease infinite; /* سریع‌تر و نرم‌تر */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
 
-  <link rel="icon" href="favicon.ico" />
+@keyframes rgbShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  <!-- فونت -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+/* نوارهای نئونی تیکه‌تیکه */
+.neon-stripe {
+  position: absolute;
+  height: 2px;
+  width: 60px;
+  background: linear-gradient(90deg, #ff33aa, #9a00ff);
+  top: 0;
+  opacity: 0.7;
+  animation: moveStripe linear infinite;
+}
 
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: 'Vazirmatn', sans-serif;
+@keyframes moveStripe {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(110vw); }
+}
 
-      /* 🌑🌈 پس‌زمینه RGB دارک */
-      background: linear-gradient(270deg, #120016, #00121f, #1a0018, #001a14);
-      background-size: 800% 800%;
-      animation: darkRGB 18s ease infinite;
+.container {
+  position: relative;
+  background: rgba(0,0,0,0.85);
+  border-radius: 15px;
+  box-shadow: 0 0 25px #9a00ff;
+  max-width: 400px;
+  width: 100%;
+  padding: 25px 30px;
+  text-align: center;
+  z-index: 1;
+}
 
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+h1 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 26px;
+  color: #c44bff;
+}
 
-    @keyframes darkRGB {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+.form-group {
+  margin-bottom: 15px;
+  text-align: right;
+}
 
-    .container {
-      background: rgba(0, 0, 0, 0.85);
-      border-radius: 15px;
-      box-shadow: 0 0 25px #9a00ff;
-      max-width: 400px;
-      width: 100%;
-      padding: 25px 30px;
-      text-align: center;
-    }
+input[type="text"], input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #9a00ff;
+  background: #222;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
 
-    h1 {
-      margin-bottom: 25px;
-      font-weight: 700;
-      font-size: 26px;
-      color: #c44bff;
-    }
+input:focus {
+  border-color: #c44bff;
+  box-shadow: 0 0 10px #c44bff;
+}
 
-    .form-group {
-      margin-bottom: 15px;
-      text-align: right;
-    }
+button {
+  width: 100%;
+  padding: 14px;
+  background: #9a00ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 700;
+  margin-top: 10px;
+}
 
-    input[type="text"],
-    input[type="tel"] {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 2px solid #9a00ff;
-      background: #222;
-      color: #fff;
-      font-size: 16px;
-      outline: none;
-      transition: 0.3s;
-    }
+button:hover { background: #c44bff; }
 
-    input:focus {
-      border-color: #c44bff;
-      box-shadow: 0 0 10px #c44bff;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #9a00ff;
-      border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 700;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background: #c44bff;
-    }
-
-    #goServersBtn {
-      background: #0099cc;
-      margin-top: 20px;
-    }
-
-    #goServersBtn:hover {
-      background: #0077aa;
-    }
-  </style>
+#goServersBtn { background: #0099cc; margin-top: 20px; }
+#goServersBtn:hover { background: #0077aa; }
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>ورود به سایت Zinox</h1>
+<!-- نوارهای نئونی تیکه‌تیکه -->
+<div class="neon-stripe" style="top:20px; animation-duration:4s;"></div>
+<div class="neon-stripe" style="top:50px; animation-duration:5s;"></div>
+<div class="neon-stripe" style="top:80px; animation-duration:6s;"></div>
+<div class="neon-stripe" style="top:110px; animation-duration:4.5s;"></div>
+<div class="neon-stripe" style="top:140px; animation-duration:5.5s;"></div>
 
-    <!-- 🌐 فرم جدید Formspree -->
-    <form action="https://formspree.io/f/xovrezva" method="POST" onsubmit="handleSubmit(event)">
-      <div class="form-group">
-        <input type="text" name="firstName" placeholder="نام" required />
-      </div>
+<div class="container">
+<h1>ورود به سایت Zinox</h1>
 
-      <div class="form-group">
-        <input type="text" name="lastName" placeholder="نام خانوادگی" required />
-      </div>
-
-      <div class="form-group">
-        <input type="text" name="discordId" placeholder="آیدی دیسکورد" required />
-      </div>
-
-      <div class="form-group">
-        <input type="tel" name="phone" placeholder="شماره موبایل (اختیاری)" />
-      </div>
-
-      <!-- انتقال پس از ارسال -->
-      <input type="hidden" name="_next" value="https://madsmart13.github.io/Zinox-ir/status.html">
-
-      <button type="submit">تایید</button>
-    </form>
-
-    <button id="goServersBtn" onclick="goToServers()">صفحه سرورها</button>
+<form id="zinoxForm" action="https://formspree.io/f/xovrezva" method="POST" target="_blank">
+  <div class="form-group">
+    <input type="text" name="firstName" placeholder="نام" required />
+  </div>
+  <div class="form-group">
+    <input type="text" name="lastName" placeholder="نام خانوادگی" required />
+  </div>
+  <div class="form-group">
+    <input type="text" name="discordId" placeholder="آیدی دیسکورد (اختیاری)" />
+  </div>
+  <div class="form-group">
+    <input type="tel" name="phone" placeholder="شماره موبایل" required />
   </div>
 
-  <script>
-    let formSubmitted = false;
+  <input type="hidden" name="_next" value="https://madsmart13.github.io/Zinox-ir/status.html">
+  <button type="submit">تایید</button>
+</form>
 
-    function handleSubmit(event) {
-      formSubmitted = true;
-      // بعد از ارسال فرم → انتقال
-      // Formspree خودش ریدایرکت می‌کنه به _next
-    }
+<button id="goServersBtn" onclick="goToServers()">صفحه سرورها</button>
+</div>
 
-    function goToServers() {
-      if (formSubmitted) {
-        window.location.href = 'status.html';
-      } else {
-        alert("لطفاً ابتدا فرم را پر کنید.");
-      }
-    }
-  </script>
+<script>
+const form = document.getElementById('zinoxForm');
+
+form.addEventListener('submit', function(e){
+  const phone = form.phone.value.trim();
+  // اعتبارسنجی شماره موبایل: باید با 09 شروع شود و دقیقاً 11 رقم باشد
+  const phonePattern = /^09\d{9}$/;
+  if(!phonePattern.test(phone)){
+    e.preventDefault();
+    alert('شماره موبایل اشتباه است!');
+    form.phone.focus();
+    return false;
+  }
+
+  // بعد از ارسال فرم → صفحه سرورها در همان تب باز شود
+  setTimeout(()=>{
+    window.location.href='status.html';
+  },1000); // کمی تأخیر برای باز شدن صفحه تشکر Formspree در تب جدید
+});
+
+let formSubmitted = false;
+function goToServers(){
+  if(formSubmitted){
+    window.location.href='status.html';
+  } else {
+    alert("لطفاً ابتدا فرم را پر کنید.");
+  }
+}
+</script>
 
 </body>
 </html>
