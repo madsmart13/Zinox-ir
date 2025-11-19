@@ -2,470 +2,418 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <title>داشبورد گیمینگ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main zinox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
-      margin: 0;
-      font-family: 'Vazirmatn', sans-serif;
-      background: #000 url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/273126115942507.6067070353764.gif') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 60px;
-      position: relative;
+      margin:0; min-height:100vh;
+      font-family:'Vazirmatn',sans-serif;
+      background:#10102a;
+      color:#fff; overflow-x:hidden;
+      position:relative;
     }
-    /* دکمه پنل کاربری */
-    .user-panel-btn {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background-color: #88f;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      cursor: pointer;
-      z-index: 1000;
-      font-weight: bold;
-      color: white;
-      box-shadow: 0 0 10px #88f;
-      transition: background-color 0.3s ease;
+    #bg-anim {
+      position:fixed; inset:0; z-index:0;
+      width:100vw; height:100vh; pointer-events:none;
+      filter:blur(.5px); transition:background .43s;
     }
-    .user-panel-btn:hover {
-      background-color: #55f;
-    }
-    /* پنل کاربری */
-    .user-panel {
-      position: fixed;
-      top: 50px;
-      left: 10px;
-      background-color: rgba(17, 17, 17, 0.95);
-      padding: 1rem 1.5rem;
-      border-radius: 15px;
-      border: 2px solid #f0f;
-      z-index: 1000;
-      width: 280px;
-      box-shadow: 0 0 15px #f0f;
-      user-select: none;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-    .user-panel.show {
-      opacity: 1;
-      max-height: 500px;
-    }
-    .user-panel h2 {
-      color: #0ff;
-      margin-top: 0;
-      margin-bottom: 1rem;
-      text-align: center;
-      text-shadow: 0 0 8px #0ff;
-    }
-    .user-panel p {
-      margin: 0.4rem 0;
-      font-size: 1rem;
-      border-bottom: 1px solid #444;
-      padding-bottom: 0.3rem;
-    }
-
     .container {
-      padding: 2rem;
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem;
+      max-width:1200px; width:100%;
+      margin:100px auto 0 auto;
+      display:grid;grid-template-columns:1fr 1fr;
+      grid-template-areas:
+        "panel download"
+        "connect servers"
+        "games games";
+      gap:3.2rem; z-index:1; position:relative;
     }
-    .quick-match {
-      text-align: center;
-      margin-top: 0;
-      background: rgba(0, 100, 0, 0.1);
-      padding: 1.5rem 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #0f0;
-      width: 100%;
-      max-width: 400px;
+    .user-panel-btn {
+      position:fixed;top:30px;left:32px;
+      background:linear-gradient(90deg,#4f33f7 80%,#19e8b0 130%);
+      color:#fff;font-weight:bold;padding:.95rem 2rem;
+      border:none;border-radius:20px;box-shadow:0 0 24px #19e8b0;
+      cursor:pointer;transition:all .23s;z-index:1012;
     }
-    .quick-match select,
-    .quick-match button {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.5rem 1rem;
-      background-color: #0f0;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: bold;
-      color: black;
-      text-shadow: none;
-      transition: background-color 0.3s ease;
+    .user-panel-btn:hover {box-shadow:0 0 43px #19e8b0;}
+    .user-panel-btn:active {transform:scale(.93);}
+    .user-panel {
+      background:rgba(33,36,73,0.92); border:2px solid #19e8b0;
+      border-radius:21px; box-shadow:0 0 34px #4f33f7,0 0 10px #19e8b0 inset;
+      padding:1.7rem 2.3rem;
+      position:absolute;top:30px;left:40px;
+      width:360px;opacity:0;max-height:0;overflow:hidden;
+      transition:max-height .44s,opacity .3s;z-index:1011;
+      grid-area:panel;
     }
-    .quick-match select:hover,
-    .quick-match button:hover {
-      background-color: #0c0;
+    .user-panel.show {max-height:600px;opacity:1;}
+    .user-panel h2 {color:#19e8b0;text-align:center;text-shadow:0 0 14px #4f33f7;}
+    .user-panel p {margin:.65rem 0;font-size:1.1rem;border-bottom:1px solid #444;padding-bottom:.3rem;}
+    .download-section {
+      background:linear-gradient(115deg,rgba(49,14,77,0.96),rgba(30,250,190,.16) 70%);
+      box-shadow:0 0 21px #f94356;
+      border:2px solid #f94356;
+      border-radius:18px;
+      padding:2.5rem; max-width:490px;
+      text-align:center; grid-area:download;
+      margin-top:0px;
     }
-    .quick-match h1 {
-      color: #00ffff;
-      background: transparent;
-      background-color: #0c0;
-      text-shadow: 0 0 10px #0f0;
-      margin: 0 0 1rem 0;
+    .download-section a {
+      background:linear-gradient(90deg,#f94356 65%,#ff49bf 100%);
+      color:#fff;font-weight:bold;text-decoration:none;
+      border-radius:13px;box-shadow:0 0 14px #f94356;
+      transition:background .27s;
+      padding:1.09rem 2.8rem; margin-top:1.2rem;display:inline-block;
     }
-    .status-msg {
-      font-weight: bold;
-      margin-top: 1rem;
-      min-height: 24px;
+    .download-section a:active {background:linear-gradient(90deg,#ff49bf,#f94356);}
+    .auto-connect-panel {
+      width:380px;margin:0 auto;border-radius:28px;padding:2.4rem 2.2rem;
+      background:linear-gradient(115deg,#191a3d 60%,#4f33f7 120%);
+      box-shadow:0 0 53px #19e8b0,0 0 20px #4f33f7 inset;
+      border:2px solid #19e8b0;position:relative;
+      display:flex;flex-direction:column;align-items:center;z-index:1;transition:box-shadow .25s;justify-self:end;
+      grid-area:connect;
     }
-    #serverList {
-      margin-top: 1rem;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.4s ease;
+    .auto-connect-panel:hover {box-shadow:0 0 73px #19e8b0;}
+    .auto-connect-title {
+      font-size:2.2rem;font-weight:bold;
+      background:linear-gradient(90deg,#ff49bf,#4f33f7 70%);
+      color:transparent;-webkit-background-clip:text;
+      margin-bottom:1.3rem;letter-spacing:1px;text-align:center;text-shadow:0 0 18px #19e8b0;animation:titleWave 2.7s infinite alternate;
     }
-    #serverList.show {
-      opacity: 1;
-      max-height: 300px;
+    @keyframes titleWave {0%{letter-spacing:0px;}55%{letter-spacing:4px;}}
+    .server-list-group {display:flex;gap:1.1rem;justify-content:center;align-items:center;margin-bottom:16px;}
+    .server-logo {
+      width:44px;height:44px;border-radius:13px;object-fit:cover;
+      box-shadow:0 0 15px #19e8b0;border:2px solid #4f33f7;
+      background:#150038;animation:logoPulse 2.3s infinite;transition:filter .2s;
     }
-    /* لیست سرورها */
-    .server-boxes {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 900px;
+    @keyframes logoPulse {0%{box-shadow:0 0 14px #19e8b0;}50%{box-shadow:0 0 31px #4f33f7;}100%{box-shadow:0 0 15px #19e8b0;}}
+
+    .server-select-modern {height:44px;min-width:112px;font-size:1.14rem;font-weight:bold;border:none;border-radius:12px;background:linear-gradient(90deg,#19e8b0,#4f33f7);color:#191b2f;padding:0 1rem;box-shadow:0 0 13px #19e8b0;cursor:pointer;outline:none;transition:box-shadow .24s,background .3s;}
+    .server-select-modern:hover {background:linear-gradient(90deg,#4f33f7,#19e8b0);box-shadow:0 0 27px #19e8b0;}
+    .auto-connect-btn, .verify-modern-btn {background:linear-gradient(90deg,#19e8b0,#4f33f7);color:#fff;font-weight:bold;font-size:1.12rem;border:none;border-radius:15px;padding:.81rem 2.25rem;box-shadow:0 0 18px #19e8b0;cursor:pointer;transition:scaling .2s,box-shadow .17s;margin-top:1.15rem;text-shadow:0 0 11px #fff9;}
+    .auto-connect-btn:active, .verify-modern-btn:active {box-shadow:0 0 47px #4f33f7;}
+    .status-box {margin-top:1.3rem;min-height:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#ff49bf;font-weight:bold;font-size:1.08rem;transition:color .3s;}
+    /* لودینگ فضایی */
+    .loader-space{width:75px;height:75px;display:inline-block;position:relative;margin-right:14px;}
+    .star1,.star2,.star3{position:absolute;border-radius:50%;background:linear-gradient(90deg,#ff49bf,#fff8,#19e8b0);box-shadow:0 0 11px #4f33f7;animation:starfly 1.9s infinite alternate;}
+    .star1{width:15px;height:15px;top:5px;left:9px;animation-delay:0s;}
+    .star2{width:12px;height:12px;top:38px;left:27px;animation-delay:.32s;}
+    .star3{width:10px;height:10px;top:53px;left:19px;animation-delay:.6s;}
+    .planet{width:33px;height:33px;border-radius:50%;background:radial-gradient(at 60% 41%,#19e8b0,#ff49bf 46%,#110e2a 94%);box-shadow:0 0 39px #19e8b0,0 0 34px #ff49bf;position:absolute;left:16px;top:22px;animation:planetspin 3.4s linear infinite;}
+    @keyframes planetspin{100%{transform:rotate(360deg);}}@keyframes starfly{0%{transform:scale(1) translateY(0);}80%{transform:scale(1.12) translateY(-16px);}100%{transform:scale(.9) translateY(9px);}}
+    /* server box ها */
+    .server-boxes {display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;width:100%;max-width:880px;grid-area:servers;}
+    .server-item {background:rgba(18,22,41,.96) radial-gradient(ellipse at top right,#19e8b0 35%,#0000 100%);border:3px solid #19e8b0;border-radius:24px;box-shadow:0 0 36px #4f33f7,0 0 14px #19e8b0 inset;width:249px;padding:1.14rem;text-align:center;position:relative;color:#fff;transition:transform .34s,box-shadow .3s;z-index:1;animation:serverPop .7s ease;}
+    @keyframes serverPop {0%{transform:scale(.82);}100%{transform:scale(1);}}
+    .server-item:hover {transform:scale(1.13) rotate(-3deg);box-shadow:0 0 86px #19e8b0;}
+    .server-item .main-img{width:100%;height:123px !important;border-radius:12px;margin-bottom:.7rem;box-shadow:0 0 18px #19e8b0 inset;object-fit:cover;}
+    .server-item .icon{width:36px;margin-top:-23px;filter:drop-shadow(0 0 12px #4f33f7);}
+    .server-item h3 {font-weight:bold;margin:.7rem 0;color:#19e8b0;text-shadow:0 0 19px #4f33f7;}
+    .server-item p {color:#ff49bf;font-weight:bold;text-shadow:0 0 12px #19e8b0;}
+    .server-item button {background:linear-gradient(90deg,#19e8b0,#4f33f7);color:#fff;font-weight:bold;border-radius:13px;border:none;padding:.8rem 1.3rem;box-shadow:0 0 14px #19e8b0;cursor:pointer;font-size:1rem;transition:box-shadow .22s;}
+    .server-item button:active {box-shadow:0 0 36px #4f33f7;}
+    /* بخش انتخاب بازی */
+    #game-section {grid-area:games;margin-top:0;padding-top:.5rem;}
+    .game-title {font-size:1.8rem;margin-bottom:13px;color:#19e8b0;background:linear-gradient(90deg,#4f33f7,#19e8b0);-webkit-background-clip:text;color:transparent;}
+    #game-options {display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-bottom:13px;}
+    .game-btn{border-radius:13px;padding:13px 26px;font-size:19px;font-weight:bold;border:none;color:#fff;cursor:pointer;box-shadow:0 0 16px #4f33f7;transition:transform .27s,box-shadow .29s;background-size:250% 250%;animation:gradientFlow 4s ease-in-out infinite;}
+    .game-btn:active{transform:scale(.9);box-shadow:0 0 52px #19e8b0;} @keyframes gradientFlow{0%{background-position:0%50%;}100%{background-position:100%50%;}}
+    .mc{background:linear-gradient(135deg,#115a34,#19e8b0,#4f33f7);}
+    .cs2{background:linear-gradient(135deg,#fdc94c,#fa6c16,#19e8b0);}
+    .r6{background:linear-gradient(135deg,#bfbfbf,#e6e6e6,#19e8b0);}
+    .dota{background:linear-gradient(135deg,#a40a1c,#ef2637,#19e8b0);}
+    .rust{background:linear-gradient(135deg,#ce9044,#fbe6b5,#19e8b0);}
+    .wz{background:linear-gradient(135deg,#393749,#19e8b0);}
+    .other{background:linear-gradient(135deg,#4f33f7,#ff49bf,#19e8b0);}
+    #selected-game {margin:20px auto 0;font-size:26px;font-weight:bold;animation:selectedAnim 4s infinite;}
+    @keyframes selectedAnim{0%{color:#ff49bf;}20%{color:#19e8b0;}40%{color:#4f33f7;}60%{color:#ff944c;}80%{color:#94ffe6;}100%{color:#ff49bf;}}
+    /* اطلاعیه سایت قدیمی */
+    .old-site-popup {
+      position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+      background:linear-gradient(120deg,#1e223c 72%,#f94356 103%);
+      border-radius:25px;box-shadow:0 0 42px #f94356,0 0 24px #fff inset;
+      width:420px;padding:2.4rem 1.8rem;
+      border:2px solid #f94356;
+      color:#fff;z-index:9999;display:none;
+      text-align:center;animation:popupwarn .6s;
     }
-    .server-item {
-      background-color: rgba(17, 17, 17, 0.9);
-      border: 3px solid #0f0;
-      border-radius: 20px;
-      padding: 1rem;
-      width: 250px;
-      text-align: center;
-      box-shadow: 0 0 15px #0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-      cursor: default;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease;
+    @keyframes popupwarn {0%{transform:scale(0) translate(-50%,-50%);}100%{transform:scale(1) translate(-50%,-50%);}}
+    .old-site-popup .warn-title {
+      color:#fff;text-shadow:0 0 12px #f94356;
+      font-size:1.35rem;font-weight:bold;letter-spacing:1px;margin-bottom:1.1rem;
     }
-    .server-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px #0f0;
+    .old-site-popup .warn-text {
+      color:#fff;font-size:1.08rem;line-height:2.2;margin-bottom:1.6rem;
     }
-    .server-item img.main-img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 0.5rem;
-      object-fit: cover;
-      height: 140px;
-      user-select: none;
-      pointer-events: none;
+    .old-site-popup .warn-link {
+      display:inline-block;background:linear-gradient(90deg,#f94356,#ff49bf);padding:.8rem 2.1rem;border-radius:13px;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 0 13px #f94356;transition:background .2s;
     }
-    .server-item .icon {
-      width: 40px;
-      margin-top: -25px;
-      filter: drop-shadow(0 0 2px black);
-      user-select: none;
-      pointer-events: none;
+    .old-site-popup .close-btn {
+      margin-top:2.1rem;padding:.6rem 1.7rem;background:#fff;color:#f94356;border-radius:11px;border:none;font-weight:bold;cursor:pointer;box-shadow:0 0 12px #fff,0 0 22px #f94356 inset;font-size:1.08rem;transition:background .18s;
     }
-    .server-item h3 {
-      margin: 0.4rem 0 0.5rem 0;
-      font-weight: bold;
-      text-shadow: 0 0 5px #0f0;
+    .old-site-popup .close-btn:hover{background:#ffe0e7;}
+    .footer{
+      text-align:center;margin-top:2.7rem;
+      width:100%;grid-column:1/3;
     }
-    .server-item p {
-      color: red;
-      margin: 0 0 1rem 0;
-      font-weight: bold;
-      text-shadow: 0 0 5px black;
+    .footer a {
+      color:#fff;font-weight:bold;font-size:1.15rem;text-decoration:none;
+      box-shadow:0 0 10px #f94356,0 0 7px #fff inset;
+      border-radius:12px;padding:.82rem 2.1rem;
+      background:linear-gradient(90deg,#f94356,#ff49bf);
+      display:inline-block;transition:background .2s;
     }
-    .server-item button {
-      background-color: #0f0;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      color: black;
-      transition: background-color 0.3s ease;
+    .footer a:hover{background:linear-gradient(90deg,#ff49bf,#f94356);}
+    /* --- پاپ‌آپ هشدار ادمین --- */
+    .admin-warning-popup {
+      position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+      z-index:99999;background:linear-gradient(120deg,#191a3d 77%,#4f33f7 122%,#ff49bf 150%);
+      border:2px solid #19e8b0; box-shadow:0 0 69px #19e8b0, 0 0 33px #ff49bf inset;
+      border-radius:22px;width:400px;max-width:92vw;padding:2.3rem 2.1rem;
+      text-align:center;animation:neonPop .5s;
+      display:none;
     }
-    .server-item button:hover {
-      background-color: #0c0;
+    @keyframes neonPop {0%{transform:scale(.7) translate(-50%,-50%);}100%{transform:scale(1) translate(-50%,-50%);}}
+    .admin-warning-inner {
+      animation:neonGlow 1.8s infinite alternate;
+      box-shadow:0 0 41px #19e8b0,0 0 26px #ff49bf;
+      border-radius:16px;padding:0.8rem 0.5rem;
     }
-    .server-item.bg1 {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65k6y6vkbHJ9ZrgkqaXKZlJU5W7UKygQvNw&s');
-      background-size: cover;
-      background-position: center;
-      border-color: #4caf50;
-      box-shadow: 0 0 20px #4caf50;
-      color: white;
-      text-shadow: 0 0 6px black;
+    @keyframes neonGlow {0%{box-shadow:0 0 15px #19e8b0;}80%{box-shadow:0 0 53px #ff49bf;}100%{box-shadow:0 0 41px #19e8b0;}}
+    .admin-warning-popup .close-btn {
+      margin-top:1.3rem;padding:.7rem 2.2rem;background:#4f33f7;color:#fff;border-radius:15px;
+      border:none;box-shadow:0 0 23px #19e8b0;font-weight:bold;cursor:pointer;font-size:1.16rem;
+      transition:background .18s;
     }
-    .server-item.bg2 {
-      background-image: url('https://4kwallpapers.com/images/walls/thumbs_2t/11129.png');
-      background-size: cover;
-      background-position: center;
-      border-color: #2196f3;
-      box-shadow: 0 0 20px #2196f3;
-      color: white;
-      text-shadow: 0 0 6px black;
-    }
+    .admin-warning-popup .close-btn:hover{background:#2d0c5d;}
+    .admin-warning-popup .warn-title { color:#fff;text-shadow:0 0 19px #19e8b0;font-size:1.34rem;margin-bottom:1rem }
+    .admin-warning-popup .warn-text { color:#ff49bf;font-size:1.09rem;line-height:2;font-weight:bold;}
   </style>
 </head>
 <body>
-  <button class="user-panel-btn" onclick="togglePanel()">پنل کاربری</button>
-  <div class="user-panel" id="userPanel">
-    <h2>پنل کاربری شما</h2>
-    <p><strong>رَنگ:</strong> فعال نشده!</p>
-    <p><strong>مدت بازی در سرور:</strong> 0 ساعت</p>
-    <p><strong>اشتراک:</strong> بدون اشتراک</p>
+<canvas id="bg-anim"></canvas>
+<button class="user-panel-btn" onclick="togglePanel()">پنل کاربری</button>
+<div class="user-panel" id="userPanel">
+  <h2>پنل کاربری شما</h2>
+  <p><strong>رَنگ:</strong> فعال نشده!</p>
+  <p><strong>مدت بازی در سرور:</strong> 0 ساعت</p>
+  <p><strong>اشتراک:</strong> بدون اشتراک</p>
+</div>
+<div class="container">
+  <div class="download-section">
+    <p style="font-weight:bold;color:#f94356;font-size:1rem;line-height:2.1;">
+      قبل ورود به سرور این فایل را دانلود کنید و در پوشه 
+      <span style="color:#19e8b0;">mods</span> در 
+      <span style="color:#19e8b0;">TLauncher</span> بگذارید.<br>
+      اگر به مشکلی خوردید به پشتیبانی پیام بدهید.<br>
+      نسخه بازی شما باید <span style="color:#f94356;">1.20.1 Forge</span> باشد.
+    </p>
+    <a href="https://s34.picofile.com/file/8486324276/BlockFront_1_20_1_0_2_0_19a_RELEASE.jar.html" target="_blank">📥 دانلود فایل</a>
   </div>
-
-  <div class="container">
-    <!-- بخش دانلود فایل -->
-    <div style="margin-top:1rem; background:rgba(0,0,0,0.7); padding:1.5rem; border-radius:15px; border:2px solid #ff2a6d; max-width:500px; text-align:center; box-shadow:0 0 15px #ff2a6d;">
-      <p style="font-weight:bold; color:red; font-size:1rem; line-height:1.8;">
-        قبل ورود به سرور این فایل را دانلود کنید و در پوشه <span style="color:#0ff;">mods</span> در <span style="color:#0ff;">TLauncher</span> بگذارید.<br>
-        اگر به مشکلی خوردید به پشتیبانی پیام بدهید.<br>
-        نسخه بازی شما باید <span style="color:#ff6666;">1.20.1 Forge</span> باشد.
-      </p>
-      <a href="https://s34.picofile.com/file/8486324276/BlockFront_1_20_1_0_2_0_19a_RELEASE.jar.html" target="_blank" style="display:inline-block; margin-top:1rem; padding:0.7rem 1.5rem; background:#ff2a6d; color:white; font-weight:bold; text-decoration:none; border-radius:10px; box-shadow:0 0 10px #ff2a6d; transition:background 0.3s ease;">
-        📥 دانلود فایل
-      </a>
-    </div>
-
-    <div class="quick-match">
-      <h1> auto connect </h1>
-      <button onclick="toggleServers()">سرورها ▲</button>
-      <div id="serverList">
-        <select id="serverSelect">
-          <option value="1">سرور 1</option>
-          <option value="2">سرور 2</option>
-          <option value="3">سرور 3</option>
-        </select>
-        <button onclick="connectServer()">تأیید</button>
-        <div class="status-msg" id="status"></div>
-      </div>
-
-      <!-- دکمه Verify نئونی با افکت انفجار -->
-      <button id="verifyBtn"
-              style="margin-top:1rem; background:linear-gradient(90deg,#0ff,#0f0); color:black; font-weight:bold; padding:0.6rem 1.5rem; border:none; border-radius:12px; cursor:pointer; font-size:1.1rem; text-shadow:0 0 5px #fff; box-shadow:0 0 15px #0ff,0 0 30px #0f0; transition:all 0.3s ease;">
-        ✅ Verify
-      </button>
-
-      <style>
-        .flash-effect {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          width: 0;
-          height: 0;
-          background: radial-gradient(circle, rgba(0,255,255,0.9), rgba(0,255,0,0.6), transparent 70%);
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 9999;
-          pointer-events: none;
-          animation: flashAnim 0.5s ease-out forwards;
-        }
-        @keyframes flashAnim {
-          to {
-            width: 200vw;
-            height: 200vh;
-            opacity: 0;
-          }
-        }
-      </style>
-    </div>
-
-    <div class="server-boxes">
-      <div class="server-item bg1">
-        <img class="main-img" src="https://i.ibb.co/0cM2fzX/wwii.png" alt="WWII" draggable="false"/>
-        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/8925/8925522.png" alt="icon" draggable="false"/>
-        <h3>کلیک کنید</h3>
-        <p>برای اتصال به ادمین پیام بدهید</p>
-        <button onclick="alert('لطفاً به ادمین پیام دهید!')">اتصال</button>
-      </div>
-      <div class="server-item bg2">
-        <img class="main-img" src="https://i.ibb.co/vQf5W8B/cs2.png" alt="CS2" draggable="false"/>
-        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/8925/8925522.png" alt="icon" draggable="false"/>
-        <h3>کلیک کنید</h3>
-        <p>برای اتصال به ادمین پیام بدهید</p>
-        <button onclick="alert('لطفاً به ادمین پیام دهید!')">اتصال</button>
-      </div>
-    </div>
-  </div>
-
-  <footer style="margin-top: 3rem; text-align: center; padding: 1rem;" dir="rtl">
-    <a href="https://sites.google.com/view/server-main-/%D8%B5%D9%81%D8%AD%D9%87-%D8%A7%D8%B5%D9%84%DB%8C" target="_blank" rel="noopener" style="color:#ff2a6d; font-weight:bold; font-size:1.2rem; text-decoration:none; font-family:'Vazirmatn',sans-serif;
-           text-shadow:0 0 3px rgba(255,42,109,.6), 0 0 6px rgba(255,42,109,.35);">
-      در صورت مشکل، به سایت دوم مراجعه کنید (سرور 2) — اینجا کلیک کنید *
-    </a>
-  </footer>
-
-  <script>
-    function togglePanel() {
-      document.getElementById('userPanel').classList.toggle('show');
-    }
-    function toggleServers() {
-      document.getElementById('serverList').classList.toggle('show');
-    }
-    function connectServer() {
-      const server = document.getElementById('serverSelect').value;
-      const status = document.getElementById('status');
-      if (server === '3') {
-        status.innerHTML = '<span style="color: orange">سرور در دسترس نیست</span>';
-        return;
-      }
-      status.innerHTML = '<span style="color: white">در حال اتصال...</span>';
-      setTimeout(() => {
-        status.innerHTML = '<span style="color: red">اتصال قطع شد</span>';
-      }, 5000);
-    }
-
-    const verifyBtn = document.getElementById('verifyBtn');
-    verifyBtn.addEventListener('mouseover', function(){
-      this.style.boxShadow = '0 0 25px #0ff,0 0 50px #0f0';
-      this.style.transform = 'scale(1.05)';
-    });
-    verifyBtn.addEventListener('mouseout', function(){
-      this.style.boxShadow = '0 0 15px #0ff,0 0 30px #0f0';
-      this.style.transform = 'scale(1)';
-    });
-    verifyBtn.addEventListener('click', function(){
-      const flash = document.createElement('div');
-      flash.className = 'flash-effect';
-      document.body.appendChild(flash);
-      setTimeout(() => {
-        window.location.href = 'https://madsmart13.github.io/verify/';
-      }, 500);
-    });
-  </script>
   
-<!-- Game Selection Section -->
-<div id="game-section">
-  <h2 class="game-title">Game ?</h2>
-  <div id="game-options">
-    <button class="game-btn mc">Minecraft</button>
-    <button class="game-btn cs2">CS 2</button>
-    <button class="game-btn r6">Rainbow Six</button>
-    <button class="game-btn dota">Dota 2</button>
-    <button class="game-btn rust">Rust</button>
-    <button class="game-btn wz">Warzone</button>
-    <button class="game-btn other">Other Game</button>
+  <div class="auto-connect-panel">
+    <div class="auto-connect-title">اتصال به سرور</div>
+    <div class="server-list-group">
+      <img src="https://i.ibb.co/0cM2fzX/wwii.png" class="server-logo"/>
+      <img src="https://i.ibb.co/vQf5W8B/cs2.png" class="server-logo"/>
+      <img src="https://4kwallpapers.com/images/walls/thumbs_2t/11129.png" class="server-logo"/>
+      <select id="serverSelect" class="server-select-modern">
+        <option value="1">سرور 1</option>
+        <option value="2">سرور 2</option>
+        <option value="3">سرور 3</option>
+      </select>
+      <button class="auto-connect-btn" onclick="connectServer()">اتصال</button>
+    </div>
+    <div class="status-box" id="status"></div>
+    <button class="verify-modern-btn" id="verifyBtn" style="margin-top:2.1rem;">✅ Verify</button>
+    <style>
+      .flash-effect {
+        position:fixed;top:50%;left:50%;width:0;height:0;
+        background:radial-gradient(circle,rgba(25,232,176,0.88),rgba(255,73,191,0.77),transparent 72%);
+        border-radius:50%;
+        transform:translate(-50%,-50%);
+        z-index:9999;pointer-events:none;
+        animation:flashAnim .52s ease-out forwards;
+      }
+      @keyframes flashAnim {to{width:210vw;height:210vh;opacity:0;}}
+    </style>
   </div>
-  <div id="other-input" style="display:none;">
-    <input type="text" id="customGame" placeholder="Enter your game ">
-    <button id="submitGame">Submit</button>
+  <!-- server box -->
+  <div class="server-boxes">
+    <div class="server-item">
+      <img class="main-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2FWfM2oXRC4snWAGq63V_ZTTNxcp_AW1c0g&s" alt="server1" draggable="false" />
+      <img class="icon" src="https://cdn-icons-png.flaticon.com/512/8925/8925522.png" alt="icon" draggable="false"/>
+      <h3>کلیک کنید</h3>
+      <p>برای اتصال به ادمین پیام بدهید</p>
+      <button onclick="showAdminWarning('server1')">اتصال</button>
+    </div>
+    <div class="server-item">
+      <img class="main-img" src="https://media.forgecdn.net/attachments/825/965/ctb_1.jpg" alt="server2" draggable="false" />
+      <img class="icon" src="https://cdn-icons-png.flaticon.com/512/8925/8925522.png" alt="icon" draggable="false"/>
+      <h3>کلیک کنید</h3>
+      <p>برای اتصال به ادمین پیام بدهید</p>
+      <button onclick="showAdminWarning('server2')">اتصال</button>
+    </div>
   </div>
-  <div id="selected-game"></div>
+  <div id="game-section">
+    <h2 class="game-title">Game ?</h2>
+    <div id="game-options">
+      <button class="game-btn mc">Minecraft</button>
+      <button class="game-btn cs2">CS 2</button>
+      <button class="game-btn r6">Rainbow Six</button>
+      <button class="game-btn dota">Dota 2</button>
+      <button class="game-btn rust">Rust</button>
+      <button class="game-btn wz">Warzone</button>
+      <button class="game-btn other">Other Game</button>
+    </div>
+    <div id="other-input" style="display:none;">
+      <input type="text" id="customGame" placeholder="Enter your game ">
+      <button id="submitGame">Submit</button>
+    </div>
+    <div id="selected-game"></div>
+  </div>
+</div>
+<!-- اطلاعیه سایت قدیمی -->
+<div class="old-site-popup" id="oldPopup">
+  <div class="warn-title">سایت قدیمی</div>
+  <div class="warn-text">
+    سایت قدیمی دیگر پشتیبانی نمی‌شود و دارای باگ‌های زیادی است.<br>
+    <strong>استفاده از سایت قدیمی پیشنهاد نمی‌شود.</strong>
+  </div>
+  <a href="https://sites.google.com/view/server-main-/%D8%B5%D9%81%D8%AD%D9%87-%D8%A7%D8%B5%D9%84%DB%8C" class="warn-link" target="_blank">رفتن به سایت قدیمی</a><br>
+  <button class="close-btn" onclick="closeOldPopup()">بستن</button>
 </div>
 
-<style>
-  #game-section {
-    font-family: Arial, sans-serif;
-    margin: 20px auto;
-    text-align: center;
-  }
-  .game-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #fff;
-  }
-  #game-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-  .game-btn {
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    border-radius: 8px;
-    font-weight: bold;
-    animation: colorchange 3s infinite alternate;
-  }
-  /* Specific gradients */
-  .mc { background: linear-gradient(45deg, darkgreen, lightgreen); }
-  .cs2 { background: linear-gradient(45deg, orange, yellow); }
-  .r6 { background: linear-gradient(45deg, silver, gray); }
-  .dota { background: linear-gradient(45deg, darkred, red); }
-  .rust { background: linear-gradient(45deg, orange, wheat); }
-  .wz { background: linear-gradient(45deg, darkgray, green); }
-  .other { background: linear-gradient(45deg, purple, violet); }
+<!-- پاپ‌آپ هشدار نئونی موشنی -->
+<div class="admin-warning-popup" id="adminWarningPopup">
+  <div class="admin-warning-inner">
+    <div class="warn-title">Warning</div>
+    <div class="warn-text">
+      <span style="display:block;">This page says:</span>
+      <span style="color:#19e8b0;">For server connection, message the admin!</span>
+    </div>
+    <button class="close-btn" onclick="closeAdminWarning()">Close</button>
+  </div>
+</div>
 
-  #selected-game {
-    margin-top: 20px;
-    font-size: 26px;
-    font-weight: bold;
-    animation: rgbColors 2s infinite;
-  }
-
-  @keyframes rgbColors {
-    0% { color: red; }
-    25% { color: green; }
-    50% { color: blue; }
-    75% { color: yellow; }
-    100% { color: magenta; }
-  }
-</style>
-
+<footer class="footer">
+  <a href="#" onclick="showOldPopup();return false;">سایت قدیمی</a>
+</footer>
 <script>
-  (function(){
-    const buttons = document.querySelectorAll('#game-options .game-btn');
-    const selectedGameDiv = document.getElementById('selected-game');
-    const optionsDiv = document.getElementById('game-options');
-    const otherInput = document.getElementById('other-input');
-    const submitBtn = document.getElementById('submitGame');
-    const inputField = document.getElementById('customGame');
+/* پس‌زمینه فضایی، موشنی، چشمک‌زن */
+const bgAnim = document.getElementById('bg-anim');
+const ctx = bgAnim.getContext('2d');
+function resizeBG(){bgAnim.width=window.innerWidth;bgAnim.height=window.innerHeight;}
+window.addEventListener('resize',resizeBG);resizeBG();
+let mx=window.innerWidth/2,my=window.innerHeight/2;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+let stars=[];
+for(let i=0;i<80;i++){
+  let sx=Math.random()*window.innerWidth;
+  let sy=Math.random()*window.innerHeight;
+  let size=Math.random()*2.4+0.6;
+  let tw=Math.random()*Math.PI*2;
+  stars.push({x:sx,y:sy,size:size,base:size,tw,glow:1+Math.random()*2});
+}
+function drawBG(){
+  ctx.clearRect(0,0,bgAnim.width,bgAnim.height);
+  let time=Date.now()*0.003;
+  for(let s of stars){
+    let dist=Math.sqrt((mx-s.x)**2+(my-s.y)**2);
+    let twinkle=0.7+Math.abs(Math.sin(s.tw+time))*0.8;
+    let alpha=0.14+0.7*Math.exp(-dist/130)*twinkle;
+    let glow=dist<120?s.glow*twinkle:1.1;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,(dist<120?s.size*glow:s.size*twinkle),0,2*Math.PI);
+    ctx.fillStyle='rgba(255,255,255,'+alpha.toFixed(2)+')';
+    ctx.shadowColor=dist<120?'#ff49bf':'#19e8b0';
+    ctx.shadowBlur=dist<120?27:5;
+    ctx.fill(); ctx.shadowBlur=0;
+  }
+  ctx.beginPath();
+  ctx.arc(mx,my,42+Math.sin(time)*8,0,2*Math.PI);
+  ctx.fillStyle='rgba(79,51,247,.23)';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(mx,my,18+Math.cos(time*0.8)*7,0,2*Math.PI);
+  ctx.fillStyle='rgba(25,232,176,.14)';
+  ctx.fill();
+}
+setInterval(drawBG,33);
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if(btn.classList.contains('other')){
-          otherInput.style.display = "block";
-        } else {
-          showSelected(btn.textContent, btn.style.background);
-        }
-      });
+/* پنل کاربری */
+function togglePanel(){document.getElementById('userPanel').classList.toggle('show');}
+
+/* لودینگ فضایی و اتصال سرور */
+function connectServer(){
+  const server=document.getElementById('serverSelect').value;
+  const status=document.getElementById('status');
+  status.innerHTML='<div class="loader-space"><div class="planet"></div><div class="star1"></div><div class="star2"></div><div class="star3"></div></div> <span style="color:#ff49bf;font-weight:bold;">در حال اتصال به سرور...</span>';
+  setTimeout(()=>{if(server==='3')
+    status.innerHTML='<span style="color:orange">سرور در دسترس نیست</span>';
+    else status.innerHTML='<span style="color:#f94356;">اتصال قطع شد</span>';},4200);
+}
+/* Verify button neon effect + animation */
+const verifyBtn=document.getElementById('verifyBtn');
+verifyBtn.addEventListener('mouseover',function(){
+  this.style.boxShadow='0 0 42px #19e8b0,0 0 19px #ff49bf';
+  this.style.transform='scale(1.14)';
+});
+verifyBtn.addEventListener('mouseout',function(){
+  this.style.boxShadow='0 0 18px #19e8b0,0 0 12px #ff49bf';
+  this.style.transform='scale(1)';
+});
+verifyBtn.addEventListener('click',function(){
+  const flash=document.createElement('div');
+  flash.className='flash-effect';
+  document.body.appendChild(flash);
+  setTimeout(()=>{window.location.href='https://madsmart13.github.io/verify/';},520);
+});
+/* بازی انتخابی */
+(function(){
+  const buttons=document.querySelectorAll('#game-options .game-btn');
+  const selectedGameDiv=document.getElementById('selected-game');
+  const optionsDiv=document.getElementById('game-options');
+  const otherInput=document.getElementById('other-input');
+  const submitBtn=document.getElementById('submitGame');
+  const inputField=document.getElementById('customGame');
+  buttons.forEach(btn=>{
+    btn.addEventListener('mouseenter',()=>{btn.style.boxShadow='0 0 45px #ff49bf';btn.style.transform='scale(1.14)';});
+    btn.addEventListener('mouseleave',()=>{btn.style.boxShadow='0 0 16px #4f33f7';btn.style.transform='scale(1)';});
+    btn.addEventListener('click',()=>{
+      if(btn.classList.contains('other')) otherInput.style.display="block";
+      else showSelected(btn.textContent,btn.style.background);
     });
-
-    submitBtn.addEventListener('click', () => {
-      const val = inputField.value.trim();
-      if(val !== ""){
-        optionsDiv.style.display = "none";
-        otherInput.style.display = "none";
-        selectedGameDiv.textContent = val;
-      }
-    });
-
-    function showSelected(name, bg){
-      optionsDiv.style.display = "none";
-      otherInput.style.display = "none";
-      selectedGameDiv.textContent = name;
-      selectedGameDiv.style.background = bg;
-      selectedGameDiv.style.webkitBackgroundClip = "text";
-      selectedGameDiv.style.color = "transparent";
+  });
+  submitBtn.addEventListener('click',()=>{
+    const val=inputField.value.trim();
+    if(val!==""){
+      optionsDiv.style.display="none";
+      otherInput.style.display="none";
+      selectedGameDiv.textContent=val;
     }
-  })();
+  });
+  function showSelected(name,bg){
+    optionsDiv.style.display="none";
+    otherInput.style.display="none";
+    selectedGameDiv.textContent=name;
+    selectedGameDiv.style.background=bg;
+    selectedGameDiv.style.webkitBackgroundClip="text";
+    selectedGameDiv.style.color="transparent";
+  }
+})();
+/* اطلاعیه سایت قدیمی وارنینگ */
+function showOldPopup(){document.getElementById('oldPopup').style.display="block";}
+function closeOldPopup(){document.getElementById('oldPopup').style.display="none";}
+/* اطلاعیه نئونی-موشنی ادمین */
+function showAdminWarning(server){
+  document.getElementById('adminWarningPopup').style.display='block';
+}
+function closeAdminWarning(){
+  document.getElementById('adminWarningPopup').style.display='none';
+}
 </script>
-
-
 </body>
 </html>
