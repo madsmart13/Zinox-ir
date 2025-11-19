@@ -183,7 +183,7 @@
 <body>
   <div class="container">
     <h1>  ورود به سایت Zinox </h1>
-    <form action="https://formspree.io/f/mkgpjkjp" method="POST" onsubmit="handleSubmit(event)">
+<form action="https://formsubmit.co/mate91mate@gmail.com" method="POST">
   <div class="form-group">
     <input type="text" name="firstName" placeholder="نام" required />
   </div>
@@ -197,10 +197,15 @@
     <input type="tel" name="phone" placeholder="شماره موبایل (اختیاری)" />
   </div>
 
-  <input type="hidden" name="_captcha" value="false" />
+  <!-- غیرفعال کردن کپچا -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- ریدایرکت پس از ارسال موفق -->
+  <input type="hidden" name="_next" value="https://madsmart13.github.io/Zinox-ir/status.html">
 
   <button type="submit">تایید</button>
 </form>
+
 
     <button id="goServersBtn" onclick="goToServers()">
       صفحه سرورها
