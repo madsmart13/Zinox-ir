@@ -1,3 +1,7 @@
+
+<H1>main site :https://madsmart13.github.io/Zinox-ir/ </H1>
+<h5>تمامی مشکلات درحال برطرف شدن میباشد </h5>
+
 <p align="center">
   <a href="https://madsmart13.github.io/DX_portal/" target="_blank">
     <img src="https://img.shields.io/badge/DX%20Portal-Gaming%20Server-blueviolet?style=for-the-badge&logo=steam&logoColor=white" alt="DX Portal" title="DX Portal"/>
@@ -26,3 +30,4 @@
   <b>[translate:Web siteleri demo modundadır]</b><br>
   <b>Sites are in demo mode</b>
 </p>
+<H1>main site :https://madsmart13.github.io/Zinox-ir/ </H1>
