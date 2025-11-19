@@ -3,213 +3,149 @@
 <head>
   <meta name="google-site-verification" content="st1evo7Mb8LtYAPvyKRaHL3rhbFsFeB4Y8q2fPW23WE" />
   <meta charset="UTF-8" />
-  <title> Zinox-ir- ورود در سرور </title>
+  <title>Zinox-ir - ورود به سرور</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 🔹 تگ‌های سئو پایه -->
+  <!-- SEO -->
   <meta name="description" content="ثبت‌نام در سرور گیمینگ Zinox. همین حالا عضو شوید و به جامعه گیمینگ ما بپیوندید.">
   <meta name="keywords" content="Zinox, سرور گیمینگ, ثبت نام, دیسکورد, بازی آنلاین, گیمر, گیم">
   <meta name="author" content="Zinox">
   <meta name="robots" content="index, follow">
 
-  <!-- 🔹 اوپن گراف -->
-  <meta property="og:title" content="Zinox-ir | ثبت‌نام در سرور گیمینگ">
-  <meta property="og:description" content="ثبت‌نام در سرور گیمینگ Zinox. همین حالا عضو شوید و به جامعه گیمینگ ما بپیوندید.">
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Zinox-ir | ثبت‌نام در سرور">
+  <meta property="og:description" content="ثبت‌نام در سرور گیمینگ Zinox. همین حالا عضو شوید.">
   <meta property="og:url" content="https://madsmart13.github.io/Zinox-ir/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://madsmart13.github.io/Zinox-ir/images/preview.png">
 
-  <!-- 🔹 توییتر کارت -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Zinox-ir | ثبت‌نام در سرور">
-  <meta name="twitter:description" content="ثبت‌نام در سرور گیمینگ Zinox-ir. همین حالا عضو شوید و به جامعه گیمینگ ما بپیوندید.">
-  <meta name="twitter:image" content="https://madsmart13.github.io/Zinox1-ir/images/preview.png">
+  <link rel="icon" href="favicon.ico" />
 
-  <!-- 🔹 لینک کاننیکال -->
-  <link rel="canonical" href="https://madsmart13.github.io/Zinox-ir/">
-
-  <!-- 🔹 آیکون سایت -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- 🔹 Schema.org JSON-LD پیشرفته -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "Zinox",
-        "url": "https://madsmart13.github.io/Zinox-ir/",
-        "description": "ثبت‌نام در سرور گیمینگ Zinox. همین حالا عضو شوید و به جامعه گیمینگ ما بپیوندید.",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Zinox"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "صفحه اصلی",
-            "item": "https://madsmart13.github.io/Zinox-ir/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "ثبت‌نام در سرور",
-            "item": "https://madsmart13.github.io/Zinox-ir/"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "چگونه در سرور Zinox ثبت‌نام کنم؟",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "فقط فرم ثبت‌نام را پر کرده و دکمه ارسال را بزنید تا به جمع جامعه گیمینگ Zinox بپیوندید."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "آیا ثبت‌نام رایگان است؟",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "بله، ثبت‌نام در سرور Zinox1 کاملاً رایگان است."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "آیا باید دیسکورد داشته باشم؟",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "بله، داشتن دیسکورد برای ارتباط با سایر اعضا و دریافت اطلاعیه‌ها الزامی است."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <!-- 🔹 فونت و استایل اصلی -->
+  <!-- فونت -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
     body {
       margin: 0;
       height: 100vh;
       font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(270deg, #ff0044, #00ffff, #ff00ff, #00ff00);
+
+      /* 🌑🌈 پس‌زمینه RGB دارک */
+      background: linear-gradient(270deg, #120016, #00121f, #1a0018, #001a14);
       background-size: 800% 800%;
-      animation: rgbShift 15s ease infinite;
+      animation: darkRGB 18s ease infinite;
+
       color: #fff;
-      direction: rtl;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
     }
-    @keyframes rgbShift {
+
+    @keyframes darkRGB {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     .container {
       background: rgba(0, 0, 0, 0.85);
       border-radius: 15px;
-      box-shadow: 0 0 25px #ff00aa;
+      box-shadow: 0 0 25px #9a00ff;
       max-width: 400px;
       width: 100%;
       padding: 25px 30px;
       text-align: center;
     }
+
     h1 {
       margin-bottom: 25px;
       font-weight: 700;
       font-size: 26px;
-      color: #ff33aa;
+      color: #c44bff;
     }
+
     .form-group {
       margin-bottom: 15px;
       text-align: right;
     }
+
     input[type="text"],
     input[type="tel"] {
       width: 100%;
       padding: 12px;
       border-radius: 8px;
-      border: 2px solid #ff0088;
+      border: 2px solid #9a00ff;
       background: #222;
       color: #fff;
       font-size: 16px;
       outline: none;
-      box-sizing: border-box;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
     }
-    input[type="text"]:focus,
-    input[type="tel"]:focus {
-      border-color: #ff33aa;
-      box-shadow: 0 0 10px #ff33aa;
+
+    input:focus {
+      border-color: #c44bff;
+      box-shadow: 0 0 10px #c44bff;
     }
+
     button {
       width: 100%;
       padding: 14px;
-      background: #ff0088;
+      background: #9a00ff;
       border: none;
       border-radius: 10px;
       font-size: 18px;
       color: white;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: 0.3s;
       font-weight: 700;
       margin-top: 10px;
     }
+
     button:hover {
-      background: #ff33aa;
+      background: #c44bff;
     }
+
     #goServersBtn {
-      background: #00ccff;
+      background: #0099cc;
       margin-top: 20px;
     }
+
     #goServersBtn:hover {
-      background: #0099cc;
+      background: #0077aa;
     }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <h1>  ورود به سایت Zinox </h1>
-<form action="https://formsubmit.co/mate91mate@gmail.com" method="POST">
-  <div class="form-group">
-    <input type="text" name="firstName" placeholder="نام" required />
-  </div>
-  <div class="form-group">
-    <input type="text" name="lastName" placeholder="نام خانوادگی" required />
-  </div>
-  <div class="form-group">
-    <input type="text" name="discordId" placeholder="آیدی دیسکورد" required />
-  </div>
-  <div class="form-group">
-    <input type="tel" name="phone" placeholder="شماره موبایل (اختیاری)" />
-  </div>
+    <h1>ورود به سایت Zinox</h1>
 
-  <!-- غیرفعال کردن کپچا -->
-  <input type="hidden" name="_captcha" value="false">
+    <!-- 🌐 فرم جدید Formspree -->
+    <form action="https://formspree.io/f/xovrezva" method="POST" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <input type="text" name="firstName" placeholder="نام" required />
+      </div>
 
-  <!-- ریدایرکت پس از ارسال موفق -->
-  <input type="hidden" name="_next" value="https://madsmart13.github.io/Zinox-ir/status.html">
+      <div class="form-group">
+        <input type="text" name="lastName" placeholder="نام خانوادگی" required />
+      </div>
 
-  <button type="submit">تایید</button>
-</form>
+      <div class="form-group">
+        <input type="text" name="discordId" placeholder="آیدی دیسکورد" required />
+      </div>
 
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="شماره موبایل (اختیاری)" />
+      </div>
 
-    <button id="goServersBtn" onclick="goToServers()">
-      صفحه سرورها
-    </button>
+      <!-- انتقال پس از ارسال -->
+      <input type="hidden" name="_next" value="https://madsmart13.github.io/Zinox-ir/status.html">
+
+      <button type="submit">تایید</button>
+    </form>
+
+    <button id="goServersBtn" onclick="goToServers()">صفحه سرورها</button>
   </div>
 
   <script>
@@ -217,9 +153,8 @@
 
     function handleSubmit(event) {
       formSubmitted = true;
-      setTimeout(() => {
-        window.location.href = 'status.html';
-      }, 1000);
+      // بعد از ارسال فرم → انتقال
+      // Formspree خودش ریدایرکت می‌کنه به _next
     }
 
     function goToServers() {
@@ -230,5 +165,6 @@
       }
     }
   </script>
+
 </body>
 </html>
