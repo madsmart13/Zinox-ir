@@ -5,28 +5,9 @@
 
 
 
-<div class="server-status">
-    <img src="path_to_your_image.png" alt="Server Status Image">
-    <div class="offline-message">
-        هشدار: سرورهای بازی آفلاین هستند!
-    </div>
-</div>
-
-<style>
-    .server-status img {
-        max-width: 100%;
-        height: auto;
-    }
-    .offline-message {
-        background-color: #ff4d4d;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-        margin-top: 15px;
-    }
-</style>
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+         سرورها  آفلاین هستند!
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ  
 
 
 
