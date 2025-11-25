@@ -129,7 +129,7 @@
     .other{background:linear-gradient(135deg,#4f33f7,#ff49bf,#19e8b0);}
     #selected-game {margin:20px auto 0;font-size:26px;font-weight:bold;animation:selectedAnim 4s infinite;}
     @keyframes selectedAnim{0%{color:#ff49bf;}20%{color:#19e8b0;}40%{color:#4f33f7;}60%{color:#ff944c;}80%{color:#94ffe6;}100%{color:#ff49bf;}}
-    /* اطلاعیه سایت قدیمی */
+
     .old-site-popup {
       position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
       background:linear-gradient(120deg,#1e223c 72%,#f94356 103%);
@@ -166,7 +166,7 @@
       display:inline-block;transition:background .2s;
     }
     .footer a:hover{background:linear-gradient(90deg,#ff49bf,#f94356);}
-    /* --- پاپ‌آپ هشدار ادمین --- */
+    
     .admin-warning-popup {
       position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
       z-index:99999;background:linear-gradient(120deg,#191a3d 77%,#4f33f7 122%,#ff49bf 150%);
@@ -197,9 +197,10 @@
 <button class="user-panel-btn" onclick="togglePanel()">پنل کاربری</button>
 <div class="user-panel" id="userPanel">
   <h2>پنل کاربری شما</h2>
-  <p><strong>رَنگ:</strong> فعال نشده!</p>
+  <p><strong>rank:</strong> فعال نشده!</p>
   <p><strong>مدت بازی در سرور:</strong> 0 ساعت</p>
   <p><strong>اشتراک:</strong> بدون اشتراک</p>
+<p><strong>وضعیت سرور ها:</strong> آفلاین❌</p>
 </div>
 <div class="container">
   <div class="download-section">
@@ -404,10 +405,10 @@ verifyBtn.addEventListener('click',function(){
     selectedGameDiv.style.color="transparent";
   }
 })();
-/* اطلاعیه سایت قدیمی وارنینگ */
+
 function showOldPopup(){document.getElementById('oldPopup').style.display="block";}
 function closeOldPopup(){document.getElementById('oldPopup').style.display="none";}
-/* اطلاعیه نئونی-موشنی ادمین */
+
 function showAdminWarning(server){
   document.getElementById('adminWarningPopup').style.display='block';
 }
@@ -415,5 +416,46 @@ function closeAdminWarning(){
   document.getElementById('adminWarningPopup').style.display='none';
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="server-status">
+    <img src="path_to_your_image.png" alt="Server Status Image">
+    <div class="offline-message">
+        هشدار: سرورهای بازی آفلاین هستند!
+    </div>
+</div>
+
+<style>
+    .server-status img {
+        max-width: 100%;
+        height: auto;
+    }
+    .offline-message {
+        background-color: #ff4d4d;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        margin-top: 15px;
+    }
+</style>
+
+
+
+
+
+
+
 </body>
 </html>
