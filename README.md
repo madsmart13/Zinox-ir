@@ -2,6 +2,44 @@
 <H1>main site :https://madsmart13.github.io/Zinox-ir/ </H1>
 <h5>تمامی مشکلات درحال برطرف شدن میباشد </h5>
 
+
+
+
+<div class="server-status">
+    <img src="path_to_your_image.png" alt="Server Status Image">
+    <div class="offline-message">
+        هشدار: سرورهای بازی آفلاین هستند!
+    </div>
+</div>
+
+<style>
+    .server-status img {
+        max-width: 100%;
+        height: auto;
+    }
+    .offline-message {
+        background-color: #ff4d4d;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        margin-top: 15px;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center">
   <a href="https://madsmart13.github.io/DX_portal/" target="_blank">
     <img src="https://img.shields.io/badge/DX%20Portal-Gaming%20Server-blueviolet?style=for-the-badge&logo=steam&logoColor=white" alt="DX Portal" title="DX Portal"/>
