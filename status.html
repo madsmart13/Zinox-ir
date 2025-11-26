@@ -15,39 +15,40 @@
 
 
 
-<div class="server-status">
-    <div class="offline-message">
-        ⛔سرورهای بازی آفلاین هستند!⚠
+<div class="news-ticker">
+    <div class="ticker-content">
+        ⛔ سرورهای بازی آفلاین هستند! ⚠ سرورهای بازی آفلاین هستند! ⛔
     </div>
 </div>
 
 <style>
-    .server-status {
+    .news-ticker {
         width: 100%;
-        height: 100vh; 
-        display: flex;
-        justify-content: center; 
-        align-items: center;     
-    }
-
-    .server-status img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .offline-message {
-        background-color: #ff4d4d;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 18px;
-        font-weight: bold;
+        background: #ff4d4d; 
         color: white;
-        margin-top: 15px;
-        text-align: center;
+        padding: 8px 0;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 16px;
+        direction: rtl;
+    }
+
+    .ticker-content {
+        display: inline-block;
+        white-space: nowrap;
+        padding-left: 100%;
+        animation: ticker 12s linear infinite;
+    }
+
+    @keyframes ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
     }
 </style>
-
-
 
 
 
@@ -493,37 +494,38 @@ function closeAdminWarning(){
 
 
 
-<div class="server-status">
-
-<div class="server-status">
-    <div class="offline-message">
-        ⛔سرورهای بازی آفلاین هستند!⚠
+<div class="news-ticker">
+    <div class="ticker-content">
+        ⛔ سرورهای بازی آفلاین هستند! ⚠ سرورهای بازی آفلاین هستند! ⛔
     </div>
 </div>
 
 <style>
-    .server-status {
+    .news-ticker {
         width: 100%;
-        height: 100vh; 
-        display: flex;
-        justify-content: center; 
-        align-items: center;     
-    }
-
-    .server-status img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .offline-message {
-        background-color: #ff4d4d;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 18px;
-        font-weight: bold;
+        background: #ff4d4d; 
         color: white;
-        margin-top: 15px;
-        text-align: center;
+        padding: 8px 0;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 16px;
+        direction: rtl;
+    }
+
+    .ticker-content {
+        display: inline-block;
+        white-space: nowrap;
+        padding-left: 100%;
+        animation: ticker 12s linear infinite;
+    }
+
+    @keyframes ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
     }
 </style>
 
